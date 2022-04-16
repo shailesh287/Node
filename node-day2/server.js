@@ -1,9 +1,10 @@
-//console.log("hello world");
+//console.log("hello");
 
 //create server
+
 const express = require("express");
 
-const server = express();
+const app = express();
 
 const middleware1 = (req, res, next) => {
   console.log("Hello this is middleware 1");
@@ -14,16 +15,19 @@ const middleware2 = (req, res, next) => {
   console.log("Hello this is middleware 2");
 };
 
-server.use(middleware1);
-server.get("/", (req, res) => {
-  res.send("Hello world");
+app.use(middleware1);
+
+app.get("/", (req, res) => {
+  res.send("success");
 });
 
-server.get("/user", middleware2, (req, res) => {
-  res.send("Hello user");
+app.get("/user", middleware2, (req, res) => {
+  res.send("success");
 });
 
-server.listen(3001);
+app.listen(3001, () => {
+  console.log("Apllication is starting");
+});
 
 //HTTP Methods - get post update/put delete
 //CRUD : create read update delete
